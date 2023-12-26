@@ -8,16 +8,21 @@ import com.ws.wiseSaying.entity.WiseSaying;
 import com.ws.wiseSaying.service.WiseSayingService;
 
 public class WiseSayingController {
+
 	private WiseSayingService wiseSayingService;
+
 	public WiseSayingController() {
-		wiseSayingService = new WiseSayingService();
+		wiseSayingService = Container.wiseSayingService;
 	}
+
 	public void write() {
 		System.out.print("명언 : ");
 		String content = Container.getScanner().nextLine().trim();
 		System.out.print("작가 : ");
 		String author = Container.getScanner().nextLine().trim();
+
 		int id = wiseSayingService.write(content, author);
+
 		System.out.printf("%d번 명언이 등록되었습니다.\n", id);
 	}
 
